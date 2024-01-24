@@ -80,7 +80,18 @@ Here are some examples of continuous functions which can be proved using inducti
 -/
 
 example (a b : ℝ) : Continuous (f := fun (x : ℝ) ↦ a*x + b) := by
-  sorry
+  rw [Continuous_def]
+  simp
+  intros c ε hε
+  use (ε / |a|)
+  constructor
+  · have h := abs_nonneg a
+
+    sorry
+  · intros x hx
+    rw [← mul_sub]
+    rw [abs_mul]
+    sorry
   done
 
 example (n : ℕ) : Continuous (f := fun (x : ℝ) ↦ x^n) := by
@@ -100,6 +111,6 @@ theorem intermediate_value_theorem (f : ℝ → ℝ) (a b c : ℝ) (h₁ : a ≤
   sorry
   done
 
--- 1 hour
+-- 1.5 hour
 
 end Myproject
